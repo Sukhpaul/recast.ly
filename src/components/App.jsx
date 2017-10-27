@@ -5,23 +5,35 @@ class App extends React.Component {
     
     this.state = {  
       videos: window.exampleVideoData,
-      video: window.exampleVideoData[0]
+      video: window.exampleVideoData[0],
     
     };
   }
   
   onVideoListClick(event) {
-    
-    this.state.video = this.state.videos[event.currentTarget.id];
-    ReactDOM.render(<App />, document.getElementById('app'));
+    this.setState({
+      video: this.state.videos[event.currentTarget.id]
+    });
   }
+  
+  
+  searchButtonClick(event) {
+    searchYouTube();
+    console.log('hello');
+  }
+  
+  componentDidMount() {
+    // console.log('parent mounted');
+    // console.log(this.);
+  }
+
 
   render() {
     return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <Search />
+          <Search click={this.searchButtonClick.bind(this)}/>
         </div>
       </nav>
       <div className="row">
