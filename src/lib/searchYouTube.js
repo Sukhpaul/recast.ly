@@ -1,32 +1,20 @@
 var searchYouTube = (options, callback) => {
   
-  console.log('options.key', options.key);
-  
-  var info = {
-    q: options.query,
+  $.get('https://www.googleapis.com/youtube/v3/search', {
+    part: 'snippet',
     key: options.key,
-    maxResults: options.max,
+    q: options.query,
+    maxResults: max,
     type: 'video',
-    videoEmbeddable: true,
-    part: 'snippet'
-    
-  };
-  
-  $.ajax({
-    url: 'https://www.googleapis.com/youtube/v3/search',
-    type: 'GET',
-    data: info,
-    success: function(data) {
-      console.log(data);
+    videoEmbeddable: 'true'
+  })
+  .done(({items}) => {
+    if (callback) {
       callback(data.items);
-      // data.items.callback();
-      // componentDidMount() {
-      //   return data.items;
-      // }
-    },
-    error: function(data) {
-      console.log('failed get');
     }
+  })
+  .fail(({responceJSON}) => {
+    responceJSON.error.errors.forEach((err) => console.error(err));
   });
 };
 

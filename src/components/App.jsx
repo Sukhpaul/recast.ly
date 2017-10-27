@@ -5,7 +5,7 @@ class App extends React.Component {
     
     this.state = {  
       videos: window.exampleVideoData,
-      video: window.exampleVideoData[0],
+      video: window.exampleVideoData[0]
     
     };
   }
@@ -18,14 +18,29 @@ class App extends React.Component {
   
   
   searchButtonClick(event) {
-    searchYouTube();
+    console.log(this);
     console.log('hello');
   }
   
-  componentDidMount() {
-    // console.log('parent mounted');
-    // console.log(this.);
-  }
+  // componentDidMount() {
+  //   console.log('this is working');
+  //   searchYouTube({key: window.YOUTUBE_API_KEY, max: 5, query: 'hi'});
+    
+  //   this.setState({
+  //     video: exampleVideoData[1]
+      
+  //   });
+  // }
+  //   searchYouTube({
+  //     key: window.YOUTUBE_API_KEY,
+  //     max: 5,
+  //     query: ''
+  //   }, function(data) {
+  //     this.setState({
+  //       videos: data.items
+  //     });
+  //   });
+  // }
 
 
   render() {
